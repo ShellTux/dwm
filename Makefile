@@ -27,7 +27,6 @@ ${OBJ}: config.h config.mk
 
 config.h:
 	cp config.def.h $@
-	patch -p1 $@ <laptop.diff
 
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
