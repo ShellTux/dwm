@@ -157,12 +157,12 @@ static const char *const autostart[] = {
 	NULL /* terminate */
 };
 
-static const char *scratchpadcmd[]  = {"s", "scratchpad", "--class", "Scratchpad", "--name", "spterm", "--title", "Scratchpad", "--lines", "24", "--columns", "80", NULL};
-static const char *scratchpadcmd2[]  = {"r", "scratchpad", "--class", "Scratchpad", "--name", "spfilemanager", "--title", "File Manager", "--lines", "24", "--columns", "80", "--terminal", "kitty", "--command", "ranger", NULL};
-static const char *scratchpadcmd3[]  = {"m", "scratchpad", "--class", "Scratchpad", "--name", "spmusic", "--title", "Music", "--lines", "24", "--columns", "80", "--command", "ncmpcpp --screen visualizer", NULL};
-static const char *scratchpadcmd4[]  = {"c", "scratchpad", "--class", "Scratchpad", "--name", "spcalc", "--title", "Calculator", "--lines", "24", "--columns", "80", "--command", "bc --mathlib", NULL};
-static const char *scratchpadcmd5[]  = {"x", "scratchpad", "--class", "Scratchpad", "--name", "sppython", "--title", "Python Shell", "--lines", "24", "--columns", "80", "--command", "bpython", NULL};
-static const char *scratchpadcmd6[]  = {"h", "scratchpad", "--class", "Scratchpad", "--name", "sphtop", "--title", "Htop", "--lines", "24", "--columns", "80", "--command", "htop", NULL };
+static const char *scratchpadcmd[]  = {"s", "scratchpad", "--class", "Scratchpad", "--name", "spterm", "--title", "Scratchpad", "--lines", "34", "--columns", "120", NULL};
+static const char *scratchpadcmd2[]  = {"r", "scratchpad", "--class", "Scratchpad", "--name", "spfilemanager", "--title", "File Manager", "--lines", "34", "--columns", "120", "--terminal", "kitty", "--command", "ranger", NULL};
+static const char *scratchpadcmd3[]  = {"m", "scratchpad", "--class", "Scratchpad", "--name", "spmusic", "--title", "Music", "--lines", "34", "--columns", "120", "--command", "ncmpcpp --screen visualizer", NULL};
+static const char *scratchpadcmd4[]  = {"c", "scratchpad", "--class", "Scratchpad", "--name", "spcalc", "--title", "Calculator", "--lines", "34", "--columns", "120", "--command", "bc --mathlib", NULL};
+static const char *scratchpadcmd5[]  = {"x", "scratchpad", "--class", "Scratchpad", "--name", "sppython", "--title", "Python Shell", "--lines", "34", "--columns", "120", "--command", "bpython", NULL};
+static const char *scratchpadcmd6[]  = {"h", "scratchpad", "--class", "Scratchpad", "--name", "sphtop", "--title", "Htop", "--lines", "34", "--columns", "120", "--command", "htop", NULL };
 
 /* Tags
  * In a traditional dwm the number of tags in use can be changed simply by changing the number
@@ -600,3 +600,58 @@ static const Button buttons[] = {
 };
 
 
+static const char *ipcsockpath = "/tmp/dwm.sock";
+static IPCCommand ipccommands[] = {
+	IPCCOMMAND( focusmon, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( focusstack, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( incnmaster, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( killclient, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( quit, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( setlayoutsafe, 1, {ARG_TYPE_PTR} ),
+	IPCCOMMAND( setmfact, 1, {ARG_TYPE_FLOAT} ),
+	IPCCOMMAND( setstatus, 1, {ARG_TYPE_STR} ),
+	IPCCOMMAND( tag, 1, {ARG_TYPE_UINT} ),
+	IPCCOMMAND( tagmon, 1, {ARG_TYPE_UINT} ),
+	IPCCOMMAND( togglebar, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( togglefloating, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( toggletag, 1, {ARG_TYPE_UINT} ),
+	IPCCOMMAND( toggleview, 1, {ARG_TYPE_UINT} ),
+	IPCCOMMAND( view, 1, {ARG_TYPE_UINT} ),
+	IPCCOMMAND( zoom, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( togglealttag, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( setcfact, 1, {ARG_TYPE_FLOAT} ),
+	IPCCOMMAND( cyclelayout, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( explace, 1, {ARG_TYPE_UINT} ),
+	IPCCOMMAND( togglehorizontalexpand, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( toggleverticalexpand, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( togglemaximize, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( floatpos, 1, {ARG_TYPE_STR} ),
+	IPCCOMMAND( fullscreen, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( focusurgent, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( inplacerotate, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( togglehorizontalmax, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( toggleverticalmax, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( togglemax, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( moveresize, 1, {ARG_TYPE_STR} ),
+	IPCCOMMAND( rioresize, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( rotatestack, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( self_restart, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( setborderpx, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( shiftboth, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( shifttagclients, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( shiftview, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( shiftviewclients, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( togglesticky, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( togglefullscreen, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( incrgaps, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( incrigaps, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( incrogaps, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( incrihgaps, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( incrivgaps, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( incrohgaps, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( incrovgaps, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( togglegaps, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( defaultgaps, 1, {ARG_TYPE_NONE} ),
+	IPCCOMMAND( setgapsex, 1, {ARG_TYPE_SINT} ),
+	IPCCOMMAND( xrdb, 1, {ARG_TYPE_NONE} ),
+};

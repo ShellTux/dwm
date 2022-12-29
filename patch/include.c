@@ -33,6 +33,13 @@
 #include "focusurgent.c"
 #include "fullscreen.c"
 #include "inplacerotate.c"
+#include "ipc.c"
+#ifdef VERSION
+#include "ipc/IPCClient.c"
+#include "ipc/yajl_dumps.c"
+#include "ipc/ipc.c"
+#include "ipc/util.c"
+#endif
 #include "maximize.c"
 #include "moveresize.c"
 #include "movestack.c"
