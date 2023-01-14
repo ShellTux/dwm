@@ -251,6 +251,7 @@ static const Rule rules[] = {
 	RULE(.class = "Scratchpad",      .isfloating = 1,         .iscentered = 1)
 	RULE(.class = "Tk",              .isfloating = 1,         .noswallow = 1,      .iscentered = 1)
 	RULE(.class = "Yad",             .isfloating = 1,         .noswallow = 1,      .iscentered = 1)
+	RULE(.instance = "Places",       .isfloating = 1,         .iscentered = 1)
 	RULE(.title = "/dev/ttyUSB0",    .isfloating = 1)
 	// Terminal definitions
 	RULE(.class = "Alacritty",       .isterminal = 1)
