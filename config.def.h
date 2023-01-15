@@ -248,9 +248,9 @@ static const Rule rules[] = {
 	RULE(.class = "qutebrowser",     .noswallow  = 1)
 	// Windows floating definitions
 	RULE(.class = "qpwgraph",        .isfloating = 1)
-	RULE(.class = "Scratchpad",      .isfloating = 1,         .iscentered = 1)
-	RULE(.class = "Tk",              .isfloating = 1,         .noswallow = 1,      .iscentered = 1)
-	RULE(.class = "Yad",             .isfloating = 1,         .noswallow = 1,      .iscentered = 1)
+	RULE(.class = "Scratchpad",      .isfloating = 1,         .iscentered = 1,     .isterminal = 1)
+	RULE(.class = "Tk",              .isfloating = 1,         .iscentered = 1      . noswallow = 1)
+	RULE(.class = "Yad",             .isfloating = 1,         .iscentered = 1      . noswallow = 1)
 	RULE(.instance = "Places",       .isfloating = 1,         .iscentered = 1)
 	RULE(.title = "/dev/ttyUSB0",    .isfloating = 1)
 	// Terminal definitions
