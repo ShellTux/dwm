@@ -153,7 +153,19 @@ static char *colors[][ColCount] = {
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 
 static const char *const autostart[] = {
-	/* "dwmblocks &", NULL, */
+	"clipmenud", NULL,
+	"discord", NULL,
+	"dunst", NULL,
+	"firewall-applet", NULL,
+	"flameshot", NULL,
+	"mpdnotify", NULL,
+	"nm-applet", NULL,
+	"numlockx", "on", NULL,
+	"picom", NULL,
+	"qpwgraph", "--minimized", NULL,
+	"redshift-gtk", NULL,
+	"syncthingtray", "--wait", NULL,
+	/* "dwmblocks", NULL, */
 	NULL /* terminate */
 };
 
@@ -249,8 +261,8 @@ static const Rule rules[] = {
 	// Windows floating definitions
 	RULE(.class = "qpwgraph",        .isfloating = 1)
 	RULE(.class = "Scratchpad",      .isfloating = 1,         .iscentered = 1,     .isterminal = 1)
-	RULE(.class = "Tk",              .isfloating = 1,         .iscentered = 1      . noswallow = 1)
-	RULE(.class = "Yad",             .isfloating = 1,         .iscentered = 1      . noswallow = 1)
+	RULE(.class = "Tk",              .isfloating = 1,         .iscentered = 1,     . noswallow = 1)
+	RULE(.class = "Yad",             .isfloating = 1,         .iscentered = 1,     . noswallow = 1)
 	RULE(.instance = "Places",       .isfloating = 1,         .iscentered = 1)
 	RULE(.title = "/dev/ttyUSB0",    .isfloating = 1)
 	// Terminal definitions
