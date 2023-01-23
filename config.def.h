@@ -174,7 +174,7 @@ static const char *scratchpadcmd2[]  = {"r", "scratchpad", "--class", "Scratchpa
 static const char *scratchpadcmd3[]  = {"m", "scratchpad", "--class", "Scratchpad", "--name", "spmusic", "--title", "Music", "--lines", "34", "--columns", "120", "--command", "ncmpcpp --screen visualizer", NULL };
 static const char *scratchpadcmd4[]  = {"c", "scratchpad", "--class", "Scratchpad", "--name", "spcalc", "--title", "Calculator", "--lines", "34", "--columns", "120", "--command", "qalc", NULL };
 static const char *scratchpadcmd5[]  = {"x", "scratchpad", "--class", "Scratchpad", "--name", "sppython", "--title", "Python Shell", "--lines", "34", "--columns", "120", "--command", "bpython", NULL };
-static const char *scratchpadcmd6[]  = {"h", "scratchpad", "--class", "Scratchpad", "--name", "sphtop", "--title", "Htop", "--lines", "34", "--columns", "120", "--command", "htop", NULL };
+static const char *scratchpadcmd6[]  = {"h", "scratchpad", "--class", "Scratchpad", "--name", "sphtop", "--title", "Htop", "--lines", "34", "--columns", "120", "--command", "tmux new-session -n htop htop \; new-window -n nvtop nvtop \; attach", NULL };
 
 /* Tags
  * In a traditional dwm the number of tags in use can be changed simply by changing the number
@@ -205,7 +205,7 @@ static const char *scratchpadcmd6[]  = {"h", "scratchpad", "--class", "Scratchpa
  */
 static char *tagicons[][NUMTAGS] =
 {
-	[DEFAULT_TAGS]        = { "", "", "", "D", "E", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "E", "", "", "", "" },
 	[ALTERNATIVE_TAGS]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
