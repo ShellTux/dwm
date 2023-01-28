@@ -153,19 +153,7 @@ static char *colors[][ColCount] = {
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 
 static const char *const autostart[] = {
-	"clipmenud", NULL,
-	"discord", NULL,
-	"dunst", NULL,
-	"firewall-applet", NULL,
-	"flameshot", NULL,
-	"mpdnotify", NULL,
-	"nm-applet", NULL,
-	"numlockx", "on", NULL,
-	"picom", NULL,
-	"qpwgraph", "--minimized", NULL,
-	"redshift-gtk", NULL,
-	"syncthingtray", "--wait", NULL,
-	/* "dwmblocks", NULL, */
+	"dwmblocks", NULL,
 	NULL /* terminate */
 };
 
