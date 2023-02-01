@@ -1,0 +1,7 @@
+*.[oa]
+*~
+dwm
+laptop.diff
+config.h*
+Makefile
+dwm-msg
