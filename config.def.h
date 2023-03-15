@@ -246,6 +246,7 @@ static const Rule rules[] = {
 	RULE(.class = "discord",         .tags = 100000000)
 	// No swallowing
 	RULE(.class = "qutebrowser",     .noswallow  = 1)
+	RULE(.class = "Zathura",         .noswallow  = 1)
 	// Windows floating definitions
 	RULE(.class = "qpwgraph",        .isfloating = 1)
 	RULE(.class = "Scratchpad",      .isfloating = 1,         .iscentered = 1,     .isterminal = 1)
