@@ -25,7 +25,8 @@ options:
 
 ${OBJ}: config.h config.mk
 
-config.h:
+config.h: config.def.h
+	rm -f config.h
 	cp config.def.h $@
 
 dwm: ${OBJ}
@@ -36,7 +37,7 @@ dwm-msg:
 	${CC} -o $@ patch/ipc/dwm-msg.c ${LDFLAGS}
 endif
 
-clean:
+clean: config.h
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
 	rm -f dwm-msg
 

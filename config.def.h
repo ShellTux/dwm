@@ -15,7 +15,7 @@ static const char autostartblocksh[]     = "autostart_blocking.sh";
 static const char autostartsh[]          = "autostart.sh";
 static const char dwmdir[]               = "dwm";
 static const char localshare[]           = ".local/share";
-static const int usealtbar               = 1;        /* 1 means use non-dwm status bar */
+static const int usealtbar               = 0;        /* 1 means use non-dwm status bar */
 static const char *altbarclass           = "Polybar"; /* Alternate bar class name */
 static const char *altbarcmd             = "$XDG_CONFIG_HOME/polybar/launch-polybar.sh &"; /* Alternate bar launch command */
 static const int showbar                 = 1;   /* 0 means no bar */
@@ -247,6 +247,7 @@ static const Rule rules[] = {
 	// No swallowing
 	RULE(.class = "qutebrowser",     .noswallow  = 1)
 	RULE(.class = "Zathura",         .noswallow  = 1)
+	RULE(.instance = "lemonbar",     .noswallow  = 1)
 	// Windows floating definitions
 	RULE(.class = "qpwgraph",        .isfloating = 1)
 	RULE(.class = "Scratchpad",      .isfloating = 1,
@@ -298,16 +299,16 @@ static const MonitorRule monrules[] = {
  *    widthfunc, drawfunc, clickfunc - providing bar module width, draw and click functions
  *    name - does nothing, intended for visual clue and for logging / debugging
  */
-static const BarRule barrules[] = { -2 };
-/* static const BarRule barrules[] = { */
-/* 	/1* monitor   bar    alignment         widthfunc                 drawfunc                clickfunc                hoverfunc                name *1/ */
-/* 	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,               draw_tags,              click_tags,              hover_tags,              "tags" }, */
-/* 	{  0,        0,     BAR_ALIGN_RIGHT,  width_systray,            draw_systray,           click_systray,           NULL,                    "systray" }, */
-/* 	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,           draw_ltsymbol,          click_ltsymbol,          NULL,                    "layout" }, */
-/* 	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status,             draw_status,            click_statuscmd,         NULL,                    "status" }, */
-/* 	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,           draw_wintitle,          click_wintitle,          NULL,                    "wintitle" }, */
-/* 	{ statusmon, 1,     BAR_ALIGN_CENTER, width_status_es,          draw_status_es,         click_statuscmd_es,      NULL,                    "status_es" }, */
-/* }; */
+/* static const BarRule barrules[] = { -1 }; */
+static const BarRule barrules[] = {
+	/* monitor   bar    alignment         widthfunc                 drawfunc                clickfunc                hoverfunc                name */
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,               draw_tags,              click_tags,              hover_tags,              "tags" },
+	{  0,        0,     BAR_ALIGN_RIGHT,  width_systray,            draw_systray,           click_systray,           NULL,                    "systray" },
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,           draw_ltsymbol,          click_ltsymbol,          NULL,                    "layout" },
+	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status,             draw_status,            click_statuscmd,         NULL,                    "status" },
+	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,           draw_wintitle,          click_wintitle,          NULL,                    "wintitle" },
+	{ statusmon, 1,     BAR_ALIGN_CENTER, width_status_es,          draw_status_es,         click_statuscmd_es,      NULL,                    "status_es" },
+};
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
