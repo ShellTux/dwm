@@ -153,7 +153,7 @@ static char *colors[][ColCount] = {
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 
 static const char *const autostart[] = {
-	/* "dwmblocks", NULL, */
+	"dwmblocks", NULL,
 	NULL /* terminate */
 };
 
