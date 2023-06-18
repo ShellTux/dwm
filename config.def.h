@@ -157,12 +157,12 @@ static const char *const autostart[] = {
 	NULL /* terminate */
 };
 
-static const char *scratchpadcmd[]  = {"s", "scratchpad", "--class", "Scratchpad", "--name", "spterm", "--title", "Scratchpad", "--lines", "34", "--columns", "120", NULL };
-static const char *scratchpadcmd2[]  = {"r", "scratchpad", "--class", "Scratchpad", "--name", "spfilemanager", "--title", "File Manager", "--lines", "34", "--columns", "120", "--terminal", "kitty", "--command", "ranger", NULL };
-static const char *scratchpadcmd3[]  = {"m", "scratchpad", "--class", "Scratchpad", "--name", "spmusic", "--title", "Music", "--lines", "34", "--columns", "120", "--command", "ncmpcpp --screen visualizer", NULL };
-static const char *scratchpadcmd4[]  = {"c", "scratchpad", "--class", "Scratchpad", "--name", "spcalc", "--title", "Calculator", "--lines", "34", "--columns", "120", "--command", "qalc", NULL };
-static const char *scratchpadcmd5[]  = {"x", "scratchpad", "--class", "Scratchpad", "--name", "sppython", "--title", "Python Shell", "--lines", "34", "--columns", "120", "--command", "bpython", NULL };
-static const char *scratchpadcmd6[]  = {"h", "scratchpad", "--class", "Scratchpad", "--name", "sphtop", "--title", "Htop", "--lines", "34", "--columns", "120", "--command", "tmux new-session -n htop htop \; new-window -n nvtop nvtop \; attach", NULL };
+static const char *scratchpadcmd[]  = {"s", "scratchpad", "--class", "Scratchpad", "--name", "spterm", "--title", "Scratchpad", "--lines", "24", "--columns", "80", NULL };
+static const char *scratchpadcmd2[]  = {"r", "scratchpad", "--class", "Scratchpad", "--name", "spfilemanager", "--title", "File Manager", "--lines", "24", "--columns", "80", "--terminal", "kitty", "--command", "ranger", NULL };
+static const char *scratchpadcmd3[]  = {"m", "scratchpad", "--class", "Scratchpad", "--name", "spmusic", "--title", "Music", "--lines", "24", "--columns", "80", "--command", "ncmpcpp --screen visualizer", NULL };
+static const char *scratchpadcmd4[]  = {"c", "scratchpad", "--class", "Scratchpad", "--name", "spcalc", "--title", "Calculator", "--lines", "24", "--columns", "80", "--command", "qalc", NULL };
+static const char *scratchpadcmd5[]  = {"x", "scratchpad", "--class", "Scratchpad", "--name", "sppython", "--title", "Python Shell", "--lines", "24", "--columns", "80", "--command", "bpython", NULL };
+static const char *scratchpadcmd6[]  = {"h", "scratchpad", "--class", "Scratchpad", "--name", "sphtop", "--title", "Htop", "--lines", "24", "--columns", "80", "--command", "tmux new-session -n htop htop \; new-window -n nvtop nvtop \; attach", NULL };
 
 /* Tags
  * In a traditional dwm the number of tags in use can be changed simply by changing the number
