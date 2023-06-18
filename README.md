@@ -1,6 +1,6 @@
 # My dwm build
 
-This is my dwm build made possible by [bakkeby dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch),
+This is my dwm build made possible by [bakkeby dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch) using my own [fork](https://github.com/ShellTux/dwm-flexipatch) on the `personal` branch,
 and [flexipatch-finalizer](https://github.com/bakkeby/flexipatch-finalizer)
 
 List of enabled patches, can be found at `patches.def.h`.
