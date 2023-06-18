@@ -17,7 +17,7 @@ static const char dwmdir[]               = "dwm";
 static const char localshare[]           = ".local/share";
 static const int usealtbar               = 0;        /* 1 means use non-dwm status bar */
 static const char *altbarclass           = "Polybar"; /* Alternate bar class name */
-static const char *altbarcmd             = "$XDG_CONFIG_HOME/polybar/launch-polybar.sh &"; /* Alternate bar launch command */
+static const char *altbarcmd             = "${XDG_CONFIG_HOME:-HOME/.config}/polybar/launch-polybar.sh &"; /* Alternate bar launch command */
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
 static const int vertpad                 = 10;  /* vertical padding of bar */
@@ -67,7 +67,7 @@ static const char dmenufont[]            = "monospace:size=18";
 static char c000000[]                    = "#000000"; // placeholder value
 
 static char normfgcolor[]                = "#ffffff";
-static char normbgcolor[]                = "#000000";
+static char normbgcolor[]                = "#111111";
 static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
 
@@ -77,7 +77,7 @@ static char selbordercolor[]             = "#005577";
 static char selfloatcolor[]              = "#005577";
 
 static char titlenormfgcolor[]           = "#ffffff";
-static char titlenormbgcolor[]           = "#000000";
+static char titlenormbgcolor[]           = "#111111";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
@@ -87,7 +87,7 @@ static char titleselbordercolor[]        = "#005577";
 static char titleselfloatcolor[]         = "#005577";
 
 static char tagsnormfgcolor[]            = "#ffffff";
-static char tagsnormbgcolor[]            = "#000000";
+static char tagsnormbgcolor[]            = "#111111";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
@@ -96,10 +96,10 @@ static char tagsselbgcolor[]             = "#005577";
 static char tagsselbordercolor[]         = "#005577";
 static char tagsselfloatcolor[]          = "#005577";
 
-static char hidnormfgcolor[]             = "#005577";
-static char hidselfgcolor[]              = "#227799";
-static char hidnormbgcolor[]             = "#000000";
-static char hidselbgcolor[]              = "#000000";
+static char hidnormfgcolor[]             = "#000000";
+static char hidselfgcolor[]              = "#000000";
+static char hidnormbgcolor[]             = "#222222";
+static char hidselbgcolor[]              = "#222222";
 
 static char urgfgcolor[]                 = "#ffffff";
 static char urgbgcolor[]                 = "#efe417";
@@ -117,7 +117,28 @@ static char scratchnormbordercolor[]     = "#77547E";
 static char scratchnormfloatcolor[]      = "#77547E";
 
 
-static const unsigned int baralpha = 0xd0;
+static char tag1fgcolor[] = "#f92672";
+static char tag1bgcolor[] = "#272822";
+static char tag2fgcolor[] = "#a6e22e";
+static char tag2bgcolor[] = "#272822";
+static char tag3fgcolor[] = "#f4bf75";
+static char tag3bgcolor[] = "#272822";
+static char tag4fgcolor[] = "#66d9ef";
+static char tag4bgcolor[] = "#272822";
+static char tag5fgcolor[] = "#ae81ff";
+static char tag5bgcolor[] = "#272822";
+static char tag6fgcolor[] = "#f8f8f2";
+static char tag6bgcolor[] = "#272822";
+static char tag7fgcolor[] = "#75715e";
+static char tag7bgcolor[] = "#272822";
+static char tag8fgcolor[] = "#f4bf75";
+static char tag8bgcolor[] = "#272822";
+static char tag9fgcolor[] = "#a1efe4";
+static char tag9bgcolor[] = "#272822";
+static char layoutfgcolor[] = "#ae81ff";
+static char layoutbgcolor[] = "#272822";
+
+static const unsigned int baralpha = 0xe5;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
 	/*                       fg      bg        border     */
@@ -147,6 +168,26 @@ static char *colors[][ColCount] = {
 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
 	[SchemeScratchSel]  = { scratchselfgcolor, scratchselbgcolor, scratchselbordercolor, scratchselfloatcolor },
 	[SchemeScratchNorm] = { scratchnormfgcolor, scratchnormbgcolor, scratchnormbordercolor, scratchnormfloatcolor },
+	[SchemeTag1]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag2]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag3]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag4]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag5]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag6]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag7]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag8]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag9]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeLayout]       = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag1]         = { tag1fgcolor,      tag1bgcolor,      c000000 },
+	[SchemeTag2]         = { tag2fgcolor,      tag2bgcolor,      c000000 },
+	[SchemeTag3]         = { tag3fgcolor,      tag3bgcolor,	     c000000 },
+	[SchemeTag4]         = { tag4fgcolor,      tag4bgcolor,	     c000000 },
+	[SchemeTag5]         = { tag5fgcolor,      tag5bgcolor,      c000000 },
+	[SchemeTag6]         = { tag6fgcolor,      tag6bgcolor,      c000000 },
+	[SchemeTag7]         = { tag7fgcolor,      tag7bgcolor,      c000000 },
+	[SchemeTag8]         = { tag8fgcolor,      tag8bgcolor,      c000000 },
+	[SchemeTag9]         = { tag9fgcolor,      tag9bgcolor,      c000000 },
+	[SchemeLayout]       = { layoutfgcolor,    layoutbgcolor,    c000000 },
 };
 
 
@@ -228,15 +269,6 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH",  .isfloating = 1)
-	/* RULE(.class = "Firefox",         .tags = 1 << 7 ) */
-	/* RULE(.class = "Gimp",            .tags = 1 << 4 ) */
-	/* RULE(.title = "ncmpcpp 0.9.2",   .tags = 1 << 3 ) */
-	/* RULE(.title = "Music",           .tags = 1 << 3 ) */
-	/* RULE(.class = "mpv",             .tags = 1 << 2 ) */
-	/* RULE(.class = "Steam",           .tags = 1 << 1 ) */
-	/* RULE(.class = "discord",         .tags = 1 << 0 ) */
-	// Bit left shift not working, don't know why
-	// Window's tag spawn rule definitons
 	RULE(.class = "Firefox",         .tags = 000000010)
 	RULE(.class = "Gimp",            .tags = 000000100)
 	RULE(.title = "ncmpcpp 0.9.2",   .tags = 000100000)
@@ -272,12 +304,54 @@ static const Rule rules[] = {
 	RULE(.class = "St",              .isterminal = 1)
 	// Other definitions
 	RULE(.title = "Event Tester",    .noswallow = 1) /* xev */
-	RULE(.instance = "spterm",       .scratchkey = 's',      .isfloating = 1,      .iscentered = 1,    .isterminal = 1)
-	RULE(.instance = "spfilemanager",.scratchkey = 'r',      .isfloating = 1,      .iscentered = 1,    .isterminal = 1)
-	RULE(.instance = "spmusic",      .scratchkey = 'm',      .isfloating = 1,      .iscentered = 1,    .isterminal = 1)
-	RULE(.instance = "spcalc",       .scratchkey = 'c',      .isfloating = 1,      .iscentered = 1,    .isterminal = 1)
-	RULE(.instance = "sppython",     .scratchkey = 'x',      .isfloating = 1,      .iscentered = 1,    .isterminal = 1)
-	RULE(.instance = "sphtop",       .scratchkey = 'h',      .isfloating = 1,      .iscentered = 1,    .isterminal = 1)
+	RULE(.instance = "spterm",       .scratchkey = 's',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "spfilemanager",.scratchkey = 'r',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "spmusic",      .scratchkey = 'm',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "spcalc",       .scratchkey = 'c',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "sppython",     .scratchkey = 'x',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "sphtop",       .scratchkey = 'h',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "spterm",       .scratchkey = 's',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "spfilemanager",.scratchkey = 'r',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "spmusic",      .scratchkey = 'm',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "spcalc",       .scratchkey = 'c',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "sppython",     .scratchkey = 'x',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
+	RULE(.instance = "sphtop",       .scratchkey = 'h',
+					 .isfloating = 1,
+					 .iscentered = 1,
+					 .isterminal = 1)
 };
 
 static const MonitorRule monrules[] = {
@@ -299,7 +373,6 @@ static const MonitorRule monrules[] = {
  *    widthfunc, drawfunc, clickfunc - providing bar module width, draw and click functions
  *    name - does nothing, intended for visual clue and for logging / debugging
  */
-/* static const BarRule barrules[] = { -1 }; */
 static const BarRule barrules[] = {
 	/* monitor   bar    alignment         widthfunc                 drawfunc                clickfunc                hoverfunc                name */
 	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,               draw_tags,              click_tags,              hover_tags,              "tags" },
@@ -332,12 +405,12 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "TTT",      bstack },
 	{ "[M]",      monocle },
-	{ "|M|",      centeredmaster },
 	{ "HHH",      grid },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "===",      bstackhoriz },
+	{ "TTT",      bstack },
+	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
 	{ "|||",      col },
 	{ "[D]",      deck },
@@ -346,7 +419,6 @@ static const Layout layouts[] = {
 	{ "---",      horizgrid },
 	{ ":::",      gaplessgrid },
 	{ "###",      nrowgrid },
-	{ NULL,       NULL },
 };
 
 
@@ -555,6 +627,8 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_minus,      setborderpx,            {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_plus,       setborderpx,            {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_numbersign, setborderpx,            {.i = 0 } },
+	{ MODKEY|ControlMask,           XK_comma,      cyclelayout,            {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period,     cyclelayout,            {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_comma,      cyclelayout,            {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period,     cyclelayout,            {.i = +1 } },
 	TAGKEYS(                        XK_1,                                  0)

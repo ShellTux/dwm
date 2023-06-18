@@ -39,10 +39,8 @@ draw_tags(Bar *bar, BarArg *a)
 		invert = 0;
 		w = TEXTW(icon);
 		drw_setscheme(drw, scheme[
-			m->tagset[m->seltags] & 1 << i
-			? SchemeTagsSel
-			: urg & 1 << i
-			? SchemeUrg
+			(occ | m->tagset[m->seltags]) & 1 << i
+			? SchemeTag1 + i
 			: SchemeTagsNorm
 		]);
 		drw_text(drw, x, a->y, w, a->h, lrpad / 2, icon, invert, False);

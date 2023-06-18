@@ -56,6 +56,7 @@
 #define Button8                 8
 #define Button9                 9
 #define NUMTAGS                 9
+#define NUMVIEWHIST             NUMTAGS
 #define BARRULES                20
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
 #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
@@ -99,6 +100,16 @@ enum {
 	SchemeUrg,
 	SchemeScratchSel,
 	SchemeScratchNorm,
+	SchemeTag1,
+	SchemeTag2,
+	SchemeTag3,
+	SchemeTag4,
+	SchemeTag5,
+	SchemeTag6,
+	SchemeTag7,
+	SchemeTag8,
+	SchemeTag9,
+	SchemeLayout,
 }; /* color schemes */
 
 enum {
@@ -389,8 +400,8 @@ static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
-static void showhide(Client *c);
 static void sigchld(int unused);
+static void showhide(Client *c);
 static void spawn(const Arg *arg);
 static pid_t spawncmd(const Arg *arg);
 static void tag(const Arg *arg);
@@ -1047,7 +1058,7 @@ createmon(void)
 
 	if (!(m->pertag = (Pertag *)calloc(1, sizeof(Pertag))))
 		die("fatal: could not malloc() %u bytes\n", sizeof(Pertag));
-	m->pertag->curtag = m->pertag->prevtag = 1;
+	m->pertag->curtag = 1;
 	for (i = 0; i <= NUMTAGS; i++) {
 
 
@@ -2300,7 +2311,6 @@ setup(void)
 	int i;
 	XSetWindowAttributes wa;
 	Atom utf8string;
-
 	/* clean up any zombies immediately */
 	sigchld(0);
 
@@ -2447,8 +2457,10 @@ void
 sigchld(int unused)
 {
 	pid_t pid;
+
 	if (signal(SIGCHLD, sigchld) == SIG_ERR)
 		die("can't install SIGCHLD handler:");
+
 	while (0 < (pid = waitpid(-1, NULL, WNOHANG))) {
 		pid_t *p, *lim;
 
@@ -2474,6 +2486,8 @@ spawn(const Arg *arg)
 pid_t
 spawncmd(const Arg *arg)
 {
+	struct sigaction sa;
+
 	pid_t pid;
 	if (arg->v == dmenucmd)
 		dmenumon[0] = '0' + selmon->num;
@@ -2484,6 +2498,12 @@ spawncmd(const Arg *arg)
 			close(ConnectionNumber(dpy));
 
 		setsid();
+
+		sigemptyset(&sa.sa_mask);
+		sa.sa_flags = 0;
+		sa.sa_handler = SIG_DFL;
+		sigaction(SIGCHLD, &sa, NULL);
+
 		execvp(((char **)arg->v)[0], (char **)arg->v);
 		die("dwm: execvp '%s' failed:", ((char **)arg->v)[0]);
 	}
@@ -2589,12 +2609,10 @@ toggleview(const Arg *arg)
 
 		if (newtagset == ~0)
 		{
-			selmon->pertag->prevtag = selmon->pertag->curtag;
 			selmon->pertag->curtag = 0;
 		}
 		/* test if the user did not select the same tag */
 		if (!(newtagset & 1 << (selmon->pertag->curtag - 1))) {
-			selmon->pertag->prevtag = selmon->pertag->curtag;
 			for (i = 0; !(newtagset & 1 << i); i++) ;
 			selmon->pertag->curtag = i + 1;
 		}
@@ -2636,8 +2654,10 @@ unfocus(Client *c, int setfocus, Client *nextfocus)
 void
 unmanage(Client *c, int destroyed)
 {
-	Monitor *m = c->mon;
+	Monitor *m;
 	XWindowChanges wc;
+
+	m = c->mon;
 
 	if (c->swallowing) {
 		unswallow(c);
@@ -3006,6 +3026,8 @@ view(const Arg *arg)
 	}
 	tagpreviewswitchtag();
 	selmon->seltags ^= 1; /* toggle sel tagset */
+	if (arg->ui & TAGMASK)
+		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
 	pertagview(arg);
 	focus(NULL);
 	arrange(selmon);
