@@ -138,7 +138,7 @@ static char tag9bgcolor[] = "#272822";
 static char layoutfgcolor[] = "#ae81ff";
 static char layoutbgcolor[] = "#272822";
 
-static const unsigned int baralpha = 0xe5;
+static const unsigned int baralpha = 0xb2;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
 	/*                       fg      bg        border     */
