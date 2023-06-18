@@ -153,6 +153,16 @@ static const unsigned int alphas[][3] = {
 	[SchemeUrg]          = { OPAQUE, baralpha, borderalpha },
 	[SchemeScratchSel]  = { OPAQUE, baralpha, borderalpha },
 	[SchemeScratchNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeTag1]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag2]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag3]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag4]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag5]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag6]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag7]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag8]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeTag9]         = { OPAQUE, baralpha, borderalpha},
+	[SchemeLayout]       = { OPAQUE, baralpha, borderalpha},
 };
 
 static char *colors[][ColCount] = {
