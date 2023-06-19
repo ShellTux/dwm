@@ -209,7 +209,7 @@ static const char *const autostart[] = {
 };
 
 static const char *scratchpadcmd[]  = {"s", "scratchpad", "--class", "Scratchpad", "--name", "spterm", "--title", "Scratchpad", "--lines", "34", "--columns", "120", NULL };
-static const char *scratchpadcmd2[]  = {"r", "scratchpad", "--class", "Scratchpad", "--name", "spfilemanager", "--title", "File Manager", "--lines", "34", "--columns", "120", "--terminal", "kitty", "--command", "ranger", NULL };
+static const char *scratchpadcmd2[]  = {"r", "scratchpad", "--class", "Scratchpad", "--name", "spfilemanager", "--title", "File Manager", "--lines", "34", "--columns", "120", "--terminal", "kitty", "--command", "lf", NULL };
 static const char *scratchpadcmd3[]  = {"m", "scratchpad", "--class", "Scratchpad", "--name", "spmusic", "--title", "Music", "--lines", "34", "--columns", "120", "--command", "ncmpcpp --screen visualizer", NULL };
 static const char *scratchpadcmd4[]  = {"c", "scratchpad", "--class", "Scratchpad", "--name", "spcalc", "--title", "Calculator", "--lines", "34", "--columns", "120", "--command", "qalc", NULL };
 static const char *scratchpadcmd5[]  = {"x", "scratchpad", "--class", "Scratchpad", "--name", "sppython", "--title", "Python Shell", "--lines", "34", "--columns", "120", "--command", "bpython", NULL };
