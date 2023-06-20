@@ -657,8 +657,8 @@ static const Button buttons[] = {
 	/* click                event mask           button          function        argument */
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
-	{ ClkLtSymbol,          0,                   Button4,        cyclelayout,    {.i = +1 },
-	{ ClkLtSymbol,          0,                   Button5,        cyclelayout,    {.i = -1 },
+	{ ClkLtSymbol,          0,                   Button4,        cyclelayout,    {.i = +1 } },
+	{ ClkLtSymbol,          0,                   Button5,        cyclelayout,    {.i = -1 } },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,                   Button1,        sigstatusbar,   {.i = 1 } },
 	{ ClkStatusText,        0,                   Button2,        sigstatusbar,   {.i = 2 } },
