@@ -284,7 +284,6 @@ static const Rule rules[] = {
 	RULE(.class = "Xournalpp",       .tags = 1 << 3)
 	RULE(.title = "ncmpcpp 0.9.2",   .tags = 1 << 5)
 	RULE(.title = "Music",           .tags = 1 << 5)
-	RULE(.class = "mpv",             .tags = 1 << 6)
 	RULE(.class =
 		"Jellyfin Media Player", .tags = 1 << 6)
 	RULE(.class = "Steam",           .tags = 1 << 7)
