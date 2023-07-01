@@ -279,19 +279,23 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH",  .isfloating = 1)
-	RULE(.class = "firefox",         .tags = 1 << 1)
-	RULE(.class = "Gimp",            .tags = 1 << 3)
-	RULE(.class = "Xournalpp",       .tags = 1 << 3)
-	RULE(.title = "ncmpcpp 0.9.2",   .tags = 1 << 5)
-	RULE(.title = "Music",           .tags = 1 << 5)
-	RULE(.class =
-		"Jellyfin Media Player", .tags = 1 << 6)
-	RULE(.class = "Steam",           .tags = 1 << 7)
-	RULE(.class = "discord",         .tags = 1 << 8)
+
+	// Tag Rules
+	RULE(.class = "firefox",               .tags = 1 << 1)
+	RULE(.class = "Gimp",                  .tags = 1 << 3)
+	RULE(.class = "Xournalpp",             .tags = 1 << 3)
+	RULE(.title = "ncmpcpp 0.9.2",         .tags = 1 << 5)
+	RULE(.title = "Music",                 .tags = 1 << 5)
+	RULE(.class = "Jellyfin Media Player", .tags = 1 << 6)
+	RULE(.class = "com-atlauncher-App",    .tags = 1 << 7)
+	RULE(.class = "Steam",                 .tags = 1 << 7)
+	RULE(.class = "discord",               .tags = 1 << 8)
+
 	// No swallowing
 	RULE(.class = "qutebrowser",     .noswallow  = 1)
 	RULE(.class = "Zathura",         .noswallow  = 1)
 	RULE(.instance = "lemonbar",     .noswallow  = 1)
+
 	// Windows floating definitions
 	RULE(.class = "qpwgraph",        .isfloating = 1)
 	RULE(.class = "Scratchpad",      .isfloating = 1,
