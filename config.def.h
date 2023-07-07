@@ -314,6 +314,8 @@ static const Rule rules[] = {
 	RULE(.instance = "Places",       .isfloating = 1,
 			                 .iscentered = 1)
 	RULE(.title = "/dev/ttyUSB0",    .isfloating = 1)
+	RULE(.title = "ATLauncher Console",
+			                 .isfloating = 1)
 	// Terminal definitions
 	RULE(.class = "Alacritty",       .isterminal = 1)
 	RULE(.class = "kitty",           .isterminal = 1)
