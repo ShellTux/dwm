@@ -287,6 +287,7 @@ static const Rule rules[] = {
 	RULE(.title = "ncmpcpp 0.9.2",         .tags = 1 << 5)
 	RULE(.title = "Music",                 .tags = 1 << 5)
 	RULE(.class = "Jellyfin Media Player", .tags = 1 << 6)
+	RULE(.class = "Stremio",               .tags = 1 << 6)
 	RULE(.class = "com-atlauncher-App",    .tags = 1 << 7)
 	RULE(.class = "Steam",                 .tags = 1 << 7)
 	RULE(.class = "discord",               .tags = 1 << 8)
